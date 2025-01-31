@@ -1,0 +1,372 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Orbitron:wght@400;600&display=swap');
+
+:root {
+  --neon-cyan: #00f3ff;
+  --neon-purple: #bc13fe;
+  --dark-bg: #0a0a12;
+  --cyber-border: rgba(0, 243, 255, 0.1);
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--dark-bg);
+    color: #e0e0e0;
+    margin: 0;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(transparent 95%, rgba(188, 19, 254, 0.03) 1px),
+        linear-gradient(90deg, transparent 95%, rgba(0, 243, 255, 0.03) 1px);
+    background-size: 20px 20px;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+h1, h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+    letter-spacing: 3px;
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    
+    padding: 0.5rem;
+    border: 2px solid var(--neon-cyan);
+    border-image: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple)) 1;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+    margin: 1rem 0;
+    
+    font-size: 2rem;
+}
+
+#candidates {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    padding: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-height: 60vh;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+}
+
+.candidate-card {
+    background: rgba(10, 10, 18, 0.9);
+    border: 1px solid var(--cyber-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    backdrop-filter: blur(5px);
+    min-height: auto;
+}
+
+.candidate-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple), transparent 50%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.candidate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+}
+
+.candidate-card:hover::before {
+    opacity: 1;
+}
+
+.candidate-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.candidate-card:hover::after {
+    opacity: 1;
+}
+
+.candidate-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    filter: grayscale(0.8) contrast(1.2);
+    transition: filter 0.3s;
+}
+
+.candidate-card:hover img {
+    filter: grayscale(0) contrast(1);
+}
+
+.candidate-card h3 {
+    color: var(--neon-cyan);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.candidate-card p {
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+#voteForm {
+    background: rgba(10, 10, 18, 0.95);
+    border: 1px solid var(--cyber-border);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    padding: 1rem;
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+#voteForm::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 243, 255, 0.1),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+#voteForm:hover::before {
+    left: 100%;
+}
+
+#voteForm input {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    padding: 1rem;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.3s;
+}
+
+#voteForm input:focus {
+    background: rgba(0, 243, 255, 0.05);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+    border-color: var(--neon-purple);
+}
+
+#voteForm button {
+    background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+#voteForm button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+#voteForm button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(188, 19, 254, 0.3);
+}
+
+#voteForm button:hover::before {
+    left: 100%;
+}
+
+/* Binary animation effects */
+@keyframes binary-stream {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 -100%; }
+}
+
+.candidate-card {
+    background-image: 
+        linear-gradient(transparent 95%, rgba(0, 243, 255, 0.03) 1px),
+        linear-gradient(90deg, transparent 95%, rgba(188, 19, 254, 0.03) 1px);
+    background-size: 20px 20px;
+    animation: binary-stream 20s linear infinite;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+        padding: 0.5rem;
+    }
+    
+    #candidates {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    
+    #voteForm {
+        width: 90%;
+        padding: 1.5rem;
+    }
+}
+
+/* updated */
+#voteForm input {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+}
+
+#voteForm button {
+    width: fit-content;
+    padding: 1rem 3rem;
+}
+
+/* Dodatni centrirajući stilovi za header */
+header {
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .candidate-card {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    #voteForm {
+        align-items: stretch;
+    }
+    
+    #voteForm input {
+        max-width: none;
+    }
+}
+/* Dodatni stilovi za centriranje */
+
+
+/* Fiksiraj širinu input polja */
+#voteForm input {
+    width: 200px;
+    margin: 0 auto;
+}
+
+/* Stil za naslove iznad elemenata */
+h2 {
+    /* margin-top: 2rem; */
+    width: 100%;
+}
+
+/* Media queries za kompaktniji izgled */
+@media (max-width: 768px) {
+    body {
+        padding: 0.5rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+        margin: 0.5rem 0;
+    }
+    
+    .candidate-card img {
+        height: 150px;
+    }
+    
+    #voteForm {
+        padding: 1rem;
+        width: 95%;
+    }
+}
+
+/*  Sprecavanje duplih animacija */
+/* .candidate-card {
+    animation: none;
+} */
+
+/* Naglašen broj glasova */
+.candidate-card p b {
+    display: inline-block;
+    font-size: 2rem;
+    background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(188, 19, 254, 0.4);
+    /* margin: 0.5rem 0;
+    padding: 0 0.5rem; */
+  }

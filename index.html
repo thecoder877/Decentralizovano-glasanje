@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Decentralizovano glasanje</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="icon" type="image/x-icon" href="/images/2091665.ico">
+</head>
+<body>
+    <h1>DECENTRALIZOVANO GLASANJE</h1>
+    <h2>Kandidati:</h2>
+    <ul id="candidates">
+        <!-- Ovde se dinamicki prikazuju kandidati -->
+    </ul>
+    
+    <h2>Glasaj:</h2>
+    <form id="voteForm">
+        <input type="number" id="candidateId" placeholder="Unesi ID kandidata" required />
+        <button type="submit">Glasaj</button>
+    </form>
+
+    <!-- <footer>
+        <p>Powered by Blockchain Technology</p>
+        <p>Learn more about <a href="https://ethereum.org/en/developers/docs/" target="_blank">Ethereum</a> and <a href="https://soliditylang.org/" target="_blank">Solidity</a></p>
+    </footer> -->
+
+    <script type="module" src="src/index.js"></script>
+</body>
+</html>
