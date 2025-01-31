@@ -53,8 +53,8 @@ cd Decentralizovano-glasanje
 - MetaMask browser extension
 
 
-![Voting Interface](/screenshots/decvoting.png)  
-*Voter Dashboard Preview (Concept)*
+![Voting Interface](/screenshots/decvoting.PNG)  
+*Voter Dashboard Preview*
 
 
 
