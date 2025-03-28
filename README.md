@@ -43,7 +43,7 @@ A blockchain-based voting platform built on Ethereum for secure and transparent 
 
 ```bash
 # Clone repository
-git clone https://github.com/crnapagoda/Decentralizovano-glasanje.git
+git clone https://github.com/thecoder877/Decentralizovano-glasanje.git
 cd Decentralizovano-glasanje
 ```
 ### Prerequisites
